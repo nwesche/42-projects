@@ -1,0 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nwesche <nwesche@student.42wolfsburg.de    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/05/16 11:26:29 by nwesche           #+#    #+#             */
+/*   Updated: 2022/05/16 11:40:53 by nwesche          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include <stdlib.h>
+
+char		**ft_split(char *str)
+{
+	int		i;
+	int		j;
+	int		k;
+	char	**split;
+
+	i = 0;
+	k = 0;
+	if (!(split = (char **)malloc(sizeof(char *) * 256)))
+		return (NULL);
+	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+		i += 1;
+	while (str[i])
+	{
+		j = 0;
+		if (!(split[k] = (char *)malloc(sizeof(char) * 4096)))
+			return (NULL);
+		while (str[i] != ' ' && str[i] != '\t' && str[i] != '\n' && str[i])
+			split[k][j++] = str[i++];
+		while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
+			i += 1;
+		split[k][j] = '\0';
+		k += 1;
+	}
+	split[k] = NULL;
+	return (split);
+}
