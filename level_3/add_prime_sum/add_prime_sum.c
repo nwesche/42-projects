@@ -10,26 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_putnb(int nb)
 {
-	int	i;
-
-	i = 0;
-	if (n == -2147483648)
-		write (fd, "-2147483648", 11);
+	char	c;
+	
+	if (nb < 0)
+	{
+		nb = -nb;
+		write(1, "-", 1);
+	}
+	if (nb < 10)
+	{
+		c = nb + '0';
+		write(1, &c, 1);
+	}
 	else
 	{
-		if (n < 0)
-		{
-			write (fd, "-", 1);
-			n = n * -1;
-		}
-		if (n > 9)
-		{
-			ft_putnbr_fd (n / 10, fd);
-		}
-		i = n % 10 + 48;
-		write (fd, &i, 1);
+		ft_putnbr(nb / 10);
+		ft_putnbr(nb % 10);
 	}
 }
 
