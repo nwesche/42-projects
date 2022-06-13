@@ -23,23 +23,18 @@ void	ft_putchar(char c)
 int		main(int argc, char *argv[])
 {
 	int		i;
-	char	letter;
 
 	i = 0;
 	if (argc == 2)
 	{
-		while(argv[1][i])
+		while(argv[1][i] != '\0')
 		{
-			letter = argv[1][i];
 			if(argv[1][i] >= 'A' && argv[1][i] <= 'Z')
-			{
-				letter + 32;
-			}
-			if(argv[1][i] >= 'a' && argv[1][i] <= 'z')
-			{
-				letter - 32;
-			}
-			ft_putchar(letter);
+				ft_putchar(argv[1][i] + 32);
+			else if(argv[1][i] >= 'a' && argv[1][i] <= 'z')
+				ft_putchar(argv[1][i] - 32);
+			else
+				ft_putchar(argv[1][i]);
 			i++;
 		}
 	}
