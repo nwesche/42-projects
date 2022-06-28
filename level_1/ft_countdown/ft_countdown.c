@@ -16,11 +16,11 @@ int		main(void)
 {
 	char c;
 	
-	c = '0'
-	while (c <= '9')
+	c = '9'
+	while (c >= '0')
 	{
 		write(1, &c, 1);
-		c++;
+		c--;
 	}
 	write(1, "\n", 1);
 	return(0);
