@@ -14,6 +14,14 @@
 
 int		main(void)
 {
-	write(1, "9876543210\n", 11);
-	return (0);
+	char c;
+	
+	c = '0'
+	while (c <= '9')
+	{
+		write(1, &c, 1);
+		c++;
+	}
+	write(1, "\n", 1);
+	return(0);
 }
