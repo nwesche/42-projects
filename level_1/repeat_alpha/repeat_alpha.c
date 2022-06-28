@@ -12,29 +12,33 @@
 
 #include <unistd.h>
 
-char	letter_count(char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return(c - 'a' + 1);
-	if (c >= 'A' && c <= 'Z')
-		return(c - 'A' + 1);
-	return(1);
-}
-
 int main(int argc, char *argv[])
 {
 	int i;
 	int count;
-	
+
+	i = 0;
 	if(argc == 2)
 	{
-		while(argv[1][i])
+		while(argv[1][i] != '\0')
 		{
-			count = letter_count(argv[1][i]);
-			while(count--)
+			if(argv[1][i] >= 'A' && argv[1][i] <= 'Z')
+			{
+				count = argv[1][i] - 65;
+			}
+			else if(argv[1][i] >= 'a' && argv[1][i] <= 'z')
+			{
+				count = argv[1][i] - 96;
+			}
+			while(count)
+			{
 				write(1, &argv[1][i], 1);
+				count--;
+			}
+			count = 1;
 			i++;
 		}
 	}
 	write(1, "\n", 1);
+	return(0);
 }
