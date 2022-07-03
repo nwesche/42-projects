@@ -10,58 +10,36 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void	ft_putnbr(int nb)
-{
-	char	c;
-	
-	if (nb < 0)
-	{
-		nb = -nb;
-		write(1, "-", 1);
-	}
-	if (nb < 10)
-	{
-		c = nb + '0';
-		write(1, &c, 1);
-	}
-	else
-	{
-		ft_putnbr(nb / 10);
-		ft_putnbr(nb % 10);
-	}
-}
+#include <stdio.h>
 
-int		is_prime(int nb)
+int	ft_is_prime(int n)
 {
-	int i;
+	int prime;
 
-	i = 2;
-	if (nb <= 1)
+	prime = n / 2;
+	if (n <= 1)
 		return (0);
-	while (i <= (nb / 2))
-	{
-		if (!(nb % i))
-			return (0);
-		else
-			i += 1;
-	}
-	return (1);
+	if (n == 2 || (prime * 2) != n)
+		return (1);
+	else
+		return (0);
 }
 
-int		main(int argc, char *argv[])
+int	main()
 {
-	int		nb;
-	int		sum;
+	int	i;
+	int	sum;
+	int	prime;
 
-	if (argc == 2)
+	i = 0;
+	sum = 0;
+	prime = 5;
+	while (i <= prime)
 	{
-		nb = atoi(argv[1]);
-		sum = 0;
-		while (nb > 0)
-			if (is_prime(nb--))
-				sum += (nb + 1);
-		ft_putnbr(sum);
+		if (ft_is_prime(i))
+			sum += i;
+		i++;
 	}
-	write(1, "\n", 1);
+	printf("%d\n", sum);
 	return (0);
 }
