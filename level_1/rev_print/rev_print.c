@@ -17,24 +17,31 @@ void	ft_putchar(char c)
 	write(1, &c, 1);
 }
 
-int		main(int argc, char **argv)
+char	*rev_print(char *str)
 {
-	int	i;
-
+	int i;
+	
 	i = 0;
-	if (argc == 2)
+	while(str[i] != '\0')
 	{
-		while (argv[1][i] != '\0')
-		{
-			i++;
-		}
+		i++;
+	}
+	i--;
+	while(i >= 0)
+	{
+		ft_putchar(str[i]);
 		i--;
-		while (i >= 0)
-		{
-			ft_putchar(argv[1][i]);
-			i--;
-		}
 	}
 	ft_putchar('\n');
-	return (0);
+	return(0);
+}
+
+int main(int argc, char **argv)
+{
+	if(argc == 2)
+	{
+		rev_print(argv[1]);
+	}
+	ft_putchar('\n');
+	return(0);
 }
