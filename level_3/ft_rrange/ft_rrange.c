@@ -30,3 +30,18 @@ int		*ft_rrange(int start, int end)
 	rrange[i] = end;
 	return (rrange);
 }
+
+int main(void)
+{
+	int *tab;
+	int i;
+
+	i = 0;
+	tab = ft_rrange(1, 3);
+	while(i <= 2)
+	{
+		printf("%d: %d\n", tab[i], i);
+		i++;
+	}
+	return (0);
+}
