@@ -10,24 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	lcm(unsigned int a, unsigned int b)
+unsigned int    lcm(unsigned int a, unsigned int b)
 {
-	int		gcd;
-	int		old_a;
-	int		old_b;
+    unsigned int    d;
 
-	gcd = 0;
-	old_a = a;
-	old_b = b;
-	while (1)
-	{
-		if (a == 0)
-			break ;
-		b %= a;
-		if (b == 0)
-			break ;
-		a %= b;
-	}
-	gcd = (!b) ? a : b;
-	return (gcd ? (old_a / gcd * old_b) : 0);
+    if (!a || !b)
+        return (0);
+    if (a > b)
+        d = (a / 2) + 1;
+    else
+        d = (b / 2) + 1;
+    while (!((a % d) == 0 && (b % d) == 0))
+        d--;
+    return (a * b / d);
 }
