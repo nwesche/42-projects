@@ -47,7 +47,7 @@ int		main(int argc, char const *argv[])
 
 	if (argc == 3)
 	{
-		if ((nbr1 = atoi(argv[1])) > 0 && (nbr2 = atoi(argv[2])) > 0)
+		if ((nbr1 = ft_atoi(argv[1])) > 0 && (nbr2 = ft_atoi(argv[2])) > 0)
 		{
 			while (nbr1 != nbr2)
 			{
